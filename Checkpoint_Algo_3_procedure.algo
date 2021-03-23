@@ -1,0 +1,69 @@
+// Checkpoint_algo_3
+
+             //**to read elements of the table**//         
+
+FUNCTION Read_Table(n:INTEGER) : Tab : ARRAY_OF INTEGER[length];
+VAR
+    i : INTEGER;
+BEGIN
+    WHILE (n>0) DO
+        Read(n);
+    END_WHILE
+    FOR i FROM 0 TO (Tab.length -1)  DO
+        Read(Tab[i]);
+    END_FOR
+    RETURN Tab ;
+END
+
+
+
+
+            //****procedure****//
+
+PROCEDURE dot_product(V1,V2: ARRAY_OF INTEGER[length]; ps = 0:INTEGER)
+VAR
+    //length= 2:INTEGER;//
+    i,j :INTEGER;
+    l,m:INTEGER;
+    
+BEGIN
+    V1 = Read_Table(l);
+    V2 = Read_Table(m);
+    FOR i FROM 0 TO l-1 STEP 1  DO
+       FOR j FROM 0 TO m-1 STEP 1  DO
+         ps = ps + V1[i]*V2[j];
+       END_FOR
+    END_FOR
+    write(ps)
+END
+
+
+             //****Algorithm****//
+ALGORITHM Orthogonal()
+VAR
+    Tab :  ARRAY_OF INTEGER[length];
+    z,w : INTEGER;
+    ps : INTEGER=0;
+
+BEGIN
+    write("Please enter n")
+    WHILE (n>0) DO
+        Read(n);
+    END_WHILE
+
+    FOR z FROM 0 TO 2*n STEP 1  DO
+        Tab[z] = Read_Table(w);
+    END_FOR
+
+    FOR z FROM 0 TO Tab.length-1 STEP 2  DO
+        dot_product(Tab[z],Tab[z+1],ps);
+
+        IF (ps==0) THEN
+            write("These two vectors are Orthogonal");
+        ELSE
+            write("These two vectors are not Orthogonal");
+
+        END_IF
+
+    END_FOR
+END             
